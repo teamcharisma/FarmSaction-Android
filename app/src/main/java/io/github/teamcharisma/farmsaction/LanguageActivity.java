@@ -50,6 +50,10 @@ public class LanguageActivity extends AppCompatActivity {
         }
 
         setLanguage(this, language);
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.language_key), newHighScore);
+        editor.commit();
         startActivity(new Intent(this, LoginActivity.class));
     }
 
@@ -70,6 +74,7 @@ public class LanguageActivity extends AppCompatActivity {
             config.locale = locale;
             context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
             Log.d(TAG, "Language set");
+
         } catch (SecurityException e) {
             e.printStackTrace();
         }
