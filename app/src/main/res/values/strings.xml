@@ -4,5 +4,6 @@
     <string name="language_ta" translatable="false">தமிழ்</string>
     <string name="language_hi" translatable="false">"हिंदी "</string>
     <string name="help">Help</string>
+    <string name="login_login">Login</string>
 
 </resources>
