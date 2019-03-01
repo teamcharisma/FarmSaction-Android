@@ -24,7 +24,7 @@ public class LanguageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-        String language = prefs.getString("language", "");
+        String language = prefs.getString(getStr(R.string.language_key), "");
         if (!TextUtils.isEmpty(language)) {
             setLanguage(this, language);
             startActivity(new  Intent(this, LoginActivity.class));
@@ -52,8 +52,8 @@ public class LanguageActivity extends AppCompatActivity {
         setLanguage(this, language);
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(getString(R.string.language_key), newHighScore);
-        editor.commit();
+        editor.putString(getString(R.string.language_key), language);
+        editor.apply();
         startActivity(new Intent(this, LoginActivity.class));
     }
 
