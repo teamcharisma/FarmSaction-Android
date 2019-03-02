@@ -9,4 +9,5 @@
     <string name="language_selectLanguage" translatable="false">Select a language: </string>
     <string name="addExpense">Add an expense</string>
     <string name="addRevenue">Add a revenue</string>
+    <string name="overall">Overall stats</string>
 </resources>

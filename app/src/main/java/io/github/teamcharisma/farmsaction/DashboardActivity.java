@@ -1,5 +1,6 @@
 package io.github.teamcharisma.farmsaction;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +37,26 @@ public class DashboardActivity extends AppCompatActivity {
         LinearLayout.LayoutParams overallStats_param = new LinearLayout.LayoutParams(0, 600);
         overallStats_param.weight = 1;
         overallStats.setLayoutParams(overallStats_param);
+
         //fetch data and update overallStats
+        ArrayList<Entry> overallProfitRawData = new ArrayList<>();
+        overallProfitRawData.add(new Entry(5,39));
+        overallProfitRawData.add(new Entry(11,22));
+        overallProfitRawData.add(new Entry(13,40));
+        LineDataSet overallProfitDataSet = new LineDataSet(overallProfitRawData, "Profits");
+
+        ArrayList<Entry> overallRevenueRawData = new ArrayList<>();
+        overallRevenueRawData.add(new Entry(5,10));
+        overallRevenueRawData.add(new Entry(11,20));
+        overallRevenueRawData.add(new Entry(13,30));
+        LineDataSet overallRevenueDataSet = new LineDataSet(overallRevenueRawData, "Revenue");
+
+
+        LineData overallData = new LineData();
+        overallData.addDataSet(overallProfitDataSet);
+        overallData.addDataSet(overallRevenueDataSet);
+        overallStats.setData(overallData);
+
         overallStats.invalidate();
 
         //example dashboard element data
@@ -59,5 +79,11 @@ public class DashboardActivity extends AppCompatActivity {
         x.setPosition(XAxis.XAxisPosition.BOTTOM);
         lc.getAxisRight().setEnabled(false);
         dcb.build();
+    }
+
+    public void onOverallClick(View v){
+        Intent intent = new Intent(v.getContext(), DetailedStatsActivity.class);
+        intent.putExtra("title", "overall");
+        startActivity(intent);
     }
 }

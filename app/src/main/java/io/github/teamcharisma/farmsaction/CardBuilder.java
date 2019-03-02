@@ -1,6 +1,7 @@
 package io.github.teamcharisma.farmsaction;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ public class CardBuilder {
     ViewGroup mParent;
     Context mContext;
     View mCard;
+    String mTitle;
 
     public CardBuilder(Context context, ViewGroup parent) {
         mContext = context;
@@ -20,12 +22,22 @@ public class CardBuilder {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         lp.leftMargin = lp.rightMargin = lp.bottomMargin = lp.topMargin = 16;
         mCard.setLayoutParams(lp);
+        ImageView arrowclick = mCard.findViewById(R.id.categoryMoreIcon);
+        arrowclick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DetailedStatsActivity.class);
+                intent.putExtra("title", mTitle);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     public void setTitle(String title)
     {
         TextView tv = mCard.findViewById(R.id.categoryTitle);
         tv.setText(title);
+        mTitle = title;
     }
 
     public void setImage(int imageSrc)
