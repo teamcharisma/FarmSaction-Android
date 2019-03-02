@@ -1,5 +1,6 @@
 package io.github.teamcharisma.farmsaction;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,29 @@ public class IntroActivity extends AppCompatActivity {
                 .setDuration(600);
         charismaLogo.animate()
                 .translationY(screenHeight-charismaLogo.getY())
-                .setDuration(600);
+                .setDuration(600)
+                .setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+
+                                startActivity(new Intent(IntroActivity.this, DashboardActivity.class));
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                });
+
     }
 }

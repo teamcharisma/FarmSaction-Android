@@ -26,6 +26,8 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:id="@+id/categoryTitle"
+            android:fontFamily="@font/bahnschrift"
+            android:textSize="30dp"
             android:gravity="center_vertical" />
         <ImageView
             android:layout_width="32dp"
@@ -67,6 +69,7 @@
                 android:layout_weight="1"
                 android:padding="8dp"
                 android:text="@string/addExpense"
+                android:fontFamily="@font/bahnschrift"
                 android:gravity="center"
                 android:paddingBottom="8dp"/>
         </LinearLayout>
@@ -90,7 +93,8 @@
                 android:padding="8dp"
                 android:text="@string/addRevenue"
                 android:gravity="center"
-                android:paddingBottom="8dp"/>
+                android:paddingBottom="8dp"
+                android:fontFamily="@font/bahnschrift"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Farm"
-                    android:fontFamily="Proxima Nova"
+                    android:fontFamily="@font/proximanova"
                     android:textSize="32sp"
                     android:textColor="@color/colorTitle"
                     />
@@ -38,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="saction"
-                    android:fontFamily="Proxima Nova"
+                    android:fontFamily="@font/proximanova"
                     android:textStyle="bold"
                     android:textSize="32sp"
                     android:textColor="@color/colorTitle"/>
@@ -55,12 +55,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:text="@string/overall"/>
+                        android:fontFamily="@font/bahnschrift"
+                        android:text="@string/overall"
+                        android:textSize="30dp" />
                     <ImageView
                         android:padding="8dp"
                         android:layout_width="32dp"
