@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -17,7 +19,6 @@ import java.util.ArrayList;
 public class DashboardActivity extends AppCompatActivity {
 
     LinearLayout dashboard;
-    DashboardCardBuilder dashboardElement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +33,31 @@ public class DashboardActivity extends AppCompatActivity {
         linedata.add(new Entry(2,4));
         linedata.add(new Entry(3, 0));
         LineDataSet linedataset = new LineDataSet(linedata, "Example");
-
-        ArrayList<PieEntry> linedata2 = new ArrayList<PieEntry>();
-        linedata2.add(new PieEntry(1,4));
-        linedata2.add(new PieEntry(2,5));
-        linedata2.add(new PieEntry(3, 6));
-        PieDataSet linedataset2 = new PieDataSet(linedata2, "Example");
-
-        dashboardElement = new DashboardCardBuilder(this, dashboard);
         LineData lineData = new LineData(linedataset);
-        PieData lineData2 = new PieData(linedataset2);
-        dashboardElement.addLineChart(lineData);
-        dashboardElement.addPieChart(lineData2);
-        dashboardElement.showContent(0);
+
+        LineChart lc = new LineChart(this);
+        lc.setData(lineData);
+        lc.invalidate();
+        lc.setMinimumWidth(600);
+        lc.setMinimumHeight(600);
+
+        CardBuilder dcb = new CardBuilder(this, dashboard);
+        dcb.setTitle("Rice");
+        dcb.setGraph(lc);
+        XAxis x = lc.getXAxis();
+        x.setPosition(XAxis.XAxisPosition.BOTTOM);
+        lc.getAxisRight().setEnabled(false);
+        dcb.build();
+
+        CardBuilder dcb1 = new CardBuilder(this, dashboard);
+        dcb1.setTitle("Shit");
+        LineChart lc1 = new LineChart(this);
+        lc1.setData(lineData);
+        lc1.invalidate();
+        lc1.setMinimumWidth(600);
+        lc1.setMinimumHeight(600);
+        dcb1.setGraph(lc1);
+        dcb1.build();
     }
 
-    public void onActionClick(View view){
-        dashboardElement.showContent(1 - dashboardElement.getCurrentContent());
-    }
 }
