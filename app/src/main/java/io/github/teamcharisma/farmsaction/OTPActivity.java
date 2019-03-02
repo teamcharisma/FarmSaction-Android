@@ -1,5 +1,6 @@
 package io.github.teamcharisma.farmsaction;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +38,7 @@ public class OTPActivity extends AppCompatActivity {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success");
 
-                        FirebaseUser user = task.getResult().getUser();
-                        // ...
+                        startActivity(new Intent(this, DashboardActivity.class));
                     } else {
                         // Sign in failed, display a message and update the UI
                         Log.w(TAG, "signInWithCredential:failure", task.getException());

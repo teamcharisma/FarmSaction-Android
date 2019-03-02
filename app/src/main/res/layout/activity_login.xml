@@ -25,5 +25,4 @@
         android:layout_height="wrap_content"
         android:onClick="requestSignIn"
         android:text="@string/phone" />
-
 </LinearLayout>
