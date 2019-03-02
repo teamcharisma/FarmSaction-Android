@@ -2,6 +2,9 @@
 <resources>
     <color name="colorPrimary">#3D2D23</color>
     <color name="colorPrimaryDark">#33261F</color>
-    <color name="colorAccent">#568B3E</color>
-    <color name="colorCardBackground">#DDD3C5</color>
+    <color name="colorAccent">#3D2D23</color>
+    <color name="colorGraphProfitLine">#4D2C91</color>
+    <color name="colorGraphRevenueLine">#0077c2</color>
+    <color name="colorGraphExpenseLine">#b4004e</color>
+    <color name="colorTitle">#edcc85</color>
 </resources>

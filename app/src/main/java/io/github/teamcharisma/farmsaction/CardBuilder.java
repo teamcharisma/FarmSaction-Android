@@ -2,6 +2,8 @@ package io.github.teamcharisma.farmsaction;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.BoringLayout;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +16,16 @@ public class CardBuilder {
     Context mContext;
     View mCard;
     String mTitle;
+    float dpi;
 
     public CardBuilder(Context context, ViewGroup parent) {
         mContext = context;
         mParent = parent;
         mCard = LayoutInflater.from(context).inflate(R.layout.layout_card_category, null);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        lp.leftMargin = lp.rightMargin = lp.bottomMargin = lp.topMargin = 16;
+
+        lp.leftMargin = lp.rightMargin = (int)px(16);
+        lp.topMargin = (int)(px(32)) ;
         mCard.setLayoutParams(lp);
         ImageView arrowclick = mCard.findViewById(R.id.categoryMoreIcon);
         arrowclick.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +36,14 @@ public class CardBuilder {
                 mContext.startActivity(intent);
             }
         });
+    }
+
+    public float dp(float px){
+        return px / ((float) mContext.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+    }
+
+    public float px(float dp){
+        return dp * ((float) mContext.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 
     public void setTitle(String title)

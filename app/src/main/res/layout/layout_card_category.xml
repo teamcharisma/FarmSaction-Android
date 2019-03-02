@@ -4,8 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="32dp"
-    android:background="@color/colorCardBackground"
+    android:layout_marginTop="32dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:background="@drawable/card_background"
     >
 
     <LinearLayout
@@ -15,14 +17,24 @@
 
         <ImageView
             android:id="@+id/categoryIcon"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="0"
             />
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:id="@+id/categoryTitle"
-            android:gravity="center" />
+            android:gravity="center_vertical" />
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="8dp"
+            android:layout_weight="0"
+            android:id="@+id/categoryMoreIcon"
+            android:src="@drawable/arrow"
+            android:layout_gravity="center_vertical"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,13 +42,7 @@
         android:id="@+id/categoryGraph"
         android:orientation="horizontal"
         android:layout_gravity="center">
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_weight="0"
-            android:id="@+id/categoryMoreIcon"
-            android:src="@drawable/arrow"
-            android:layout_gravity="center_vertical"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,16 +57,18 @@
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:scaleType="fitCenter"
                 android:layout_weight="0"
-                android:src="@drawable/plus"
+                android:scaleType="fitCenter"
+                android:src="@drawable/plus_brown"
                 />
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="8dp"
-                android:text="@string/addExpense"/>
+                android:text="@string/addExpense"
+                android:gravity="center"
+                android:paddingBottom="8dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_height="wrap_content"
@@ -72,14 +80,17 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_weight="0"
-                android:src="@drawable/plus"
+                android:scaleType="fitCenter"
+                android:src="@drawable/plus_brown"
                 />
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="8dp"
-                android:text="@string/addRevenue"/>
+                android:text="@string/addRevenue"
+                android:gravity="center"
+                android:paddingBottom="8dp"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

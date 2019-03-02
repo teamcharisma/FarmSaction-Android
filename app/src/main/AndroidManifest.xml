@@ -22,7 +22,8 @@
         </activity>
         <activity android:name=".OTPActivity" />
         <activity android:name=".DetailedStatsActivity" />
-        <activity android:name=".DashboardActivity" />
+        <activity android:name=".DashboardActivity"
+            android:theme="@style/SplashTheme"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".LanguageActivity" />
     </application>
