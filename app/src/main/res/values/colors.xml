@@ -7,4 +7,6 @@
     <color name="colorGraphRevenueLine">#0077c2</color>
     <color name="colorGraphExpenseLine">#b4004e</color>
     <color name="colorTitle">#edcc85</color>
+    <color name="colorButtonPrimary">#edcc85</color>
+    <color name="colorButtonSecondary">#94876B</color>
 </resources>

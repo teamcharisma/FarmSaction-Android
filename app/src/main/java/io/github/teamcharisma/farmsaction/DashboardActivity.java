@@ -104,4 +104,8 @@ public class DashboardActivity extends AppCompatActivity {
         intent.putExtra("title", "overall");
         startActivity(intent);
     }
+
+    public void onFloatIconClick(View v){
+        startActivity(new Intent(this, NewTransactionActivity.class));
+    }
 }

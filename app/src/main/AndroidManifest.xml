@@ -12,7 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".IntroActivity"
+        <activity android:name=".AddCropActivity"></activity>
+        <activity
+            android:name=".AddProductActivity"
+            android:theme="@style/SplashTheme" />
+        <activity android:name=".ScanQRActivity" />
+        <activity android:name=".NewTransactionActivity" />
+        <activity
+            android:name=".IntroActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,11 +29,14 @@
         </activity>
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme"/>
+            android:theme="@style/SplashTheme" />
         <activity android:name=".OTPActivity" />
-        <activity android:name=".DetailedStatsActivity" />
-        <activity android:name=".DashboardActivity"
-            android:theme="@style/SplashTheme"/>
+        <activity
+            android:name=".DetailedStatsActivity"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".DashboardActivity"
+            android:theme="@style/SplashTheme" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".LanguageActivity" />
     </application>

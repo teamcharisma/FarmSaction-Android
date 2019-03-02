@@ -14,4 +14,7 @@
     <string name="addExpense">Add an expense</string>
     <string name="addRevenue">Add a revenue</string>
     <string name="overall">Overall stats</string>
+    <string name="newScanQR">Scan a QR Code</string>
+    <string name="newManualInput">Enter manually</string>
+    <string name="next">Next</string>
 </resources>
