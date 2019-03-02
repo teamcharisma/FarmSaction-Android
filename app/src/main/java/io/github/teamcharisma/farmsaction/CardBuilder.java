@@ -17,6 +17,9 @@ public class CardBuilder {
         mContext = context;
         mParent = parent;
         mCard = LayoutInflater.from(context).inflate(R.layout.layout_card_category, null);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.leftMargin = lp.rightMargin = lp.bottomMargin = lp.topMargin = 16;
+        mCard.setLayoutParams(lp);
     }
 
     public void setTitle(String title)
@@ -34,6 +37,9 @@ public class CardBuilder {
     public void setGraph(View graph)
     {
         LinearLayout l = mCard.findViewById(R.id.categoryGraph);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, 600);
+        lp.weight = 1;
+        graph.setLayoutParams(lp);
         l.addView(graph,0);
     }
 

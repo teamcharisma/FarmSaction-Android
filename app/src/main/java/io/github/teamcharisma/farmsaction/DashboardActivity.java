@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class DashboardActivity extends AppCompatActivity {
 
     LinearLayout dashboard;
+    LineChart overallStats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,17 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         dashboard = findViewById(R.id.dashboardList);
+        overallStats = findViewById(R.id.overallStats);
+
+        //customize overallChart
+        overallStats.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        overallStats.getAxisRight().setEnabled(false);
+        overallStats.setTouchEnabled(false);
+        LinearLayout.LayoutParams overallStats_param = new LinearLayout.LayoutParams(0, 600);
+        overallStats_param.weight = 1;
+        overallStats.setLayoutParams(overallStats_param);
+        //fetch data and update overallStats
+        overallStats.invalidate();
 
         //example dashboard element data
         ArrayList<Entry> linedata = new ArrayList<Entry>();
@@ -38,8 +50,7 @@ public class DashboardActivity extends AppCompatActivity {
         LineChart lc = new LineChart(this);
         lc.setData(lineData);
         lc.invalidate();
-        lc.setMinimumWidth(600);
-        lc.setMinimumHeight(600);
+        lc.setTouchEnabled(false);
 
         CardBuilder dcb = new CardBuilder(this, dashboard);
         dcb.setTitle("Rice");
@@ -48,16 +59,5 @@ public class DashboardActivity extends AppCompatActivity {
         x.setPosition(XAxis.XAxisPosition.BOTTOM);
         lc.getAxisRight().setEnabled(false);
         dcb.build();
-
-        CardBuilder dcb1 = new CardBuilder(this, dashboard);
-        dcb1.setTitle("Shit");
-        LineChart lc1 = new LineChart(this);
-        lc1.setData(lineData);
-        lc1.invalidate();
-        lc1.setMinimumWidth(600);
-        lc1.setMinimumHeight(600);
-        dcb1.setGraph(lc1);
-        dcb1.build();
     }
-
 }

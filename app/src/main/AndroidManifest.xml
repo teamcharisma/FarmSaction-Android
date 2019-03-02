@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".DashboardActivity"></activity>
+        <activity android:name=".DetailedStatsActivity"></activity>
+        <activity android:name=".DashboardActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".LanguageActivity">
             <intent-filter>
