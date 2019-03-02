@@ -7,11 +7,13 @@
     tools:context=".SplashActivity">
 
     <ImageView
-        android:layout_width="250dp"
+        android:id="@+id/farm_logo"
+        android:layout_width="195.790816dp"
         android:layout_height="250dp"
         android:layout_centerInParent="true"
         android:src="@drawable/farmlogo" />
     <ImageView
+        android:id="@+id/charisma_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/sih_ppt_white"

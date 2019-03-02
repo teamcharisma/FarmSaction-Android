@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SplashActivity"
+        <activity android:name=".IntroActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme"/>
         <activity android:name=".OTPActivity" />
         <activity android:name=".DetailedStatsActivity" />
         <activity android:name=".DashboardActivity" />
