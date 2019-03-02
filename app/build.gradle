@@ -45,4 +45,7 @@ dependencies {
     implementation('com.google.apis:google-api-services-drive:v3-rev136-1.25.0') {
         exclude group: 'org.apache.httpcomponents'
     }
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
+apply plugin: 'com.google.gms.google-services'

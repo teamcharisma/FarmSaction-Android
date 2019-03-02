@@ -4,26 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
-
-    <Button
-        android:id="@+id/google_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="requestSignIn"
-        android:text="@string/google_login" />
-
+    tools:context=".OTPActivity">
     <EditText
-        android:id="@+id/phone_input"
+        android:id="@+id/otp_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone" />
 
     <Button
-        android:id="@+id/phone_submit"
+        android:id="@+id/otp_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="requestSignIn"
-        android:text="@string/phone" />
-
+        android:onClick="signIn"
+        android:text="@string/otp" />
 </LinearLayout>

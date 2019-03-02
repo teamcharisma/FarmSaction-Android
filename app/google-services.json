@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "1082382023226",
+    "firebase_url": "https://farmsaction.firebaseio.com",
+    "project_id": "farmsaction",
+    "storage_bucket": "farmsaction.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082382023226:android:2c22993b7a41591d",
+        "android_client_info": {
+          "package_name": "io.github.teamcharisma.farmsaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082382023226-6lfeivitbktnr7ch66m0fqhjt2jujepr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.teamcharisma.farmsaction",
+            "certificate_hash": "fae0e34d1bcb77713032db742b141a6aa3e6d3e9"
+          }
+        },
+        {
+          "client_id": "1082382023226-i9f8pv9to6o010il74qea04ohkn3slpp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.teamcharisma.farmsaction",
+            "certificate_hash": "b162a91f4cc3e8ab7f6966d09d0b2eeaa924eca6"
+          }
+        },
+        {
+          "client_id": "1082382023226-dshquiv1o18mugp2msdas5d6ia7pagmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYk09KQoYHB4PoF2PjZyKwZ__jT-R7aWI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082382023226-dshquiv1o18mugp2msdas5d6ia7pagmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

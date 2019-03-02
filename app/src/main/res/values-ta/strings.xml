@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help">உதவி</string>
-    <string name="login">உள் நுழை</string>
+    <string name="google_login">உள் நுழை</string>
 </resources>
