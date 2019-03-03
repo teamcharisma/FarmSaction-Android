@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,7 +110,8 @@ public class AddProductActivity extends AppCompatActivity {
     public void onClickNext(View v){
         Intent intent = new Intent(this, AddCropActivity.class);
         for (ProductOption p : products){
-            intent.putExtra("product-type:" + p.getOption(), p.getChecked());
+            Log.d("Shyamisgreat", p.getOption() + ":-" + String.valueOf(p.getChecked()));
+            intent.putExtra( p.getOption(), p.getChecked());
         }
         startActivity(intent);
     }

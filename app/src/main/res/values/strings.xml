@@ -17,4 +17,5 @@
     <string name="newScanQR">Scan a QR Code</string>
     <string name="newManualInput">Enter manually</string>
     <string name="next">Next</string>
+    <string name="chooseCrop">Choose Crop:</string>
 </resources>
