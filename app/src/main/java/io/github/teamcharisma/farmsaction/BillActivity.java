@@ -3,6 +3,7 @@ package io.github.teamcharisma.farmsaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 public class BillActivity extends AppCompatActivity {
 
     Bundle extras;
+    ArrayList<String> itemName, itemPrices, categories, crops;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,17 +24,17 @@ public class BillActivity extends AppCompatActivity {
         extras = oldIntent.getExtras();
         LinearLayout ll = findViewById(R.id.bill);
         if (extras != null) {
-            ArrayList<String> itemName = extras.getStringArrayList("itemnames");
-            ArrayList<String> itemPrices = extras.getStringArrayList("itemprices");
-            ArrayList<String> categories = extras.getStringArrayList("categories");
-            ArrayList<String> crops = extras.getStringArrayList("crops");
+            itemName = extras.getStringArrayList("itemnames");
+             itemPrices = extras.getStringArrayList("itemprices");
+            categories = extras.getStringArrayList("categories");
+            crops = extras.getStringArrayList("crops");
 
             for (int i = 0; i < itemName.size(); i++){
+                Log.d("shyams", String.valueOf(i));
                 View element = LayoutInflater.from(this).inflate(R.layout.layout_bill_item, ll, false);
-                TextView itemname, itemprice, removeButton, categoriest;
+                TextView itemname, itemprice, cropss, categoriest;
                 itemname = element.findViewById(R.id.itemname);
                 itemprice = element.findViewById(R.id.itemprice);
-                removeButton = element.findViewById(R.id.removeButton);
                 categoriest = element.findViewById(R.id.categories);
 
                 categoriest.setText(String.valueOf(categories.get(i)));
@@ -42,5 +44,23 @@ public class BillActivity extends AppCompatActivity {
                 ll.addView(element);
             }
         }
+    }
+
+    public void onAddClick(View w) {
+        Intent intent =  new Intent(this, AddRevenueItemActivity.class);
+        intent.putExtra("itemnames", itemName);
+        intent.putExtra("itemprices", itemPrices);
+        intent.putExtra("categories", categories);
+        intent.putExtra("crops", crops);
+        startActivity(intent);
+    }
+
+    public void onQrClick(View w) {
+        Intent intent =  new Intent(this, AddRevenueItemActivity.class);
+        intent.putExtra("itemnames", itemName);
+        intent.putExtra("itemprices", itemPrices);
+        intent.putExtra("categories", categories);
+        intent.putExtra("crops", crops);
+        startActivity(intent);
     }
 }

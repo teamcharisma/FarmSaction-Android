@@ -28,7 +28,7 @@ public class NewTransactionActivity extends AppCompatActivity {
         mBuyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AddExpenseItemActivity.class));
+                startActivity(new Intent(getApplicationContext(), AddRevenueItemActivity.class));
             }
         });
     }

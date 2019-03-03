@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.zxing.client.result.TextParsedResult;
 
 import java.util.ArrayList;
 
@@ -24,6 +23,7 @@ public class AddCropActivity extends AppCompatActivity {
 
         oldIntent = getIntent();
         extras = oldIntent.getExtras();
+        int currentId = -1;
         buttons = new ArrayList<>();
 
         int id[] = {
@@ -44,6 +44,7 @@ public class AddCropActivity extends AppCompatActivity {
             public void onClick(View v) {
                 for (int i=0;i < id.length; i++) {
                     if (v.getId() == id[i]) {
+
                         crop = ((TextView)v).getText().toString();
                         //crops.set(i, !crops.get(i));
                        // if (crops.get(i))

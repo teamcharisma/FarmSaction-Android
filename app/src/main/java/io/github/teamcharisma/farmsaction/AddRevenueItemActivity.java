@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.DataSetObserver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,6 +25,7 @@ public class AddRevenueItemActivity extends AppCompatActivity {
     ArrayList<String> mCategories;
     ArrayList<String> mItemNames;
     ArrayList<String> mItemPrices;
+    ArrayList<String> mCrops;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,15 @@ public class AddRevenueItemActivity extends AppCompatActivity {
         if(extras != null)
         {
             mItemNames = extras.getStringArrayList("itemnames");
+            mCategories = extras.getStringArrayList("categories");
             mItemPrices = extras.getStringArrayList("itemprices");
-;        }
+            mCrops = extras.getStringArrayList("crops");
+        }
         else {
             mItemNames = new ArrayList<>();
             mItemPrices = new ArrayList<>();
+            mCategories = new ArrayList<>();
+            mCrops = new ArrayList<>();
         }
     }
 
@@ -54,6 +60,9 @@ public class AddRevenueItemActivity extends AppCompatActivity {
 
        intent.putExtra("itemnames", mItemNames);
        intent.putExtra("itemprices", mItemPrices);
+       intent.putExtra("categories", mCategories);
+       Log.d("shyams", String.valueOf(mItemNames.size()));
+       intent.putExtra("crops", mCrops);
 
        startActivity(intent);
     }

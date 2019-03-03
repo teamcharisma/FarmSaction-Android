@@ -4,22 +4,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginBottom="16dp">
+    android:layout_marginBottom="16dp"
+    android:layout_gravity="center">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="32dp"
         android:id="@+id/itemname" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="32dp"
         android:id="@+id/itemprice"/>
+
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="remove"
-        android:id="@+id/removeButton"/>
-    <TextView
-        android:layout_width="wrap_content"
+        android:textSize="32dp"
         android:layout_height="wrap_content"
         android:id="@+id/categories"/>
 </LinearLayout>
