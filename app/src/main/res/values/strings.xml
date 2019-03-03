@@ -4,12 +4,12 @@
     <string name="language_ta" translatable="false">தமிழ்</string>
     <string name="language_hi" translatable="false">"हिंदी "</string>
     <string name="help">Help</string>
-    <string name="google_login">Login</string>
+    <string name="google_login">Login with Google</string>
     <string name="language_key" translatable="false">User Language</string>
-    <string name="guest">Login as guest</string>
+    <string name="phone_login_hint">Your Phone Number</string>
+    <string name="phone_login">Login with Phone</string>
     <string name="api_key" translatable="false">1082382023226-5oasoufbd441p28uv5baagcg6s5t001a.apps.googleusercontent.com</string>
     <string name="otp">Submit OTP</string>
-    <string name="phone">Login with Phone</string>
     <string name="language_selectLanguage" translatable="false">Select a language: </string>
     <string name="addExpense">Add an expense</string>
     <string name="addRevenue">Add a revenue</string>

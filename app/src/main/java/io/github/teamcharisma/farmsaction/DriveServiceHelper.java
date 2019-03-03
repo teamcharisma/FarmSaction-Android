@@ -17,7 +17,9 @@ package io.github.teamcharisma.farmsaction;
 
 import android.content.Context;
 import android.support.v4.util.Pair;
+import android.support.v7.app.AppCompatActivity;
 
+import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
 import com.google.api.client.http.InputStreamContent;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
@@ -46,7 +48,9 @@ public class DriveServiceHelper {
             if (fileId == null) {
                 createDB();
             }
-        } catch (IOException e) {
+        } catch (UserRecoverableAuthIOException e) {
+            ((AppCompatActivity)context).startActivityForResult(e.getIntent(), 132);
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }

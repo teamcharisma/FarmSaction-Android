@@ -4,6 +4,10 @@
     package="io.github.teamcharisma.farmsaction">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +31,7 @@
         <activity
             android:name=".NewTransactionActivity"
             android:theme="@style/SplashTheme" />
+        <activity android:name=".UPIActivity"></activity>
         <activity
             android:name=".IntroActivity"
             android:theme="@style/SplashTheme">
@@ -48,6 +53,8 @@
             android:theme="@style/SplashTheme" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".LanguageActivity" />
+
+        <service android:name=".SMSService" />
     </application>
 
 </manifest>

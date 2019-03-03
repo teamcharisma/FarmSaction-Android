@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f2dbad"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/english_select"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/proximanovasbold"
+        android:gravity="center"
+        android:text="@string/language_en"
+        android:textColor="@color/colorPrimary"
+        android:textSize="50sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/hindi_select"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/proximanovasbold"
+        android:gravity="center"
+        android:text="@string/language_hi"
+        android:textColor="@color/colorPrimary"
+        android:textSize="50sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/tamil_select"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/proximanovasbold"
+        android:gravity="center"
+        android:text="@string/language_ta"
+        android:textColor="@color/colorPrimary"
+        android:textSize="50sp" />
 
 </LinearLayout>
