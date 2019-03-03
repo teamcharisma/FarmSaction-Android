@@ -1,8 +1,19 @@
 package io.github.teamcharisma.farmsaction;
 
-import android.arch.persistence.room.Entity;
 
-@Entity
+import java.util.ArrayList;
+
 public class Bill {
+    public ArrayList<String> itemNames;
+    public ArrayList<String> prices;
+    public ArrayList<String> categories;
+    public ArrayList<String> crops;
+
+    Bill(){
+        itemNames = new ArrayList<>();
+        prices = new ArrayList<>();
+        categories = new ArrayList<>();
+        crops = new ArrayList<>();
+    }
 
 }
