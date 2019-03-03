@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".BillActivity"></activity>
+        <activity android:name=".ShowQRActivity"></activity>
+        <activity android:name=".BillActivity" />
         <activity android:name=".AddCropActivity" />
         <activity
             android:name=".SelectCategoryActivity"
@@ -31,7 +32,7 @@
         <activity
             android:name=".NewTransactionActivity"
             android:theme="@style/SplashTheme" />
-        <activity android:name=".UPIActivity"></activity>
+        <activity android:name=".UPIActivity" />
         <activity
             android:name=".IntroActivity"
             android:theme="@style/SplashTheme">

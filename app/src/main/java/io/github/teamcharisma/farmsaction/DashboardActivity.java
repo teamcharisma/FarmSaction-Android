@@ -23,19 +23,25 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
 
     LinearLayout dashboard;
     LineChart overallStats;
+    DatabaseHelper mDatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        mDatabaseHelper = new DatabaseHelper(this);
+
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -74,29 +80,61 @@ public class DashboardActivity extends AppCompatActivity {
         overallStats.setMinimumHeight((int)(200/dpi));
         //overallStats.setMinimumWidth(600/dpi);
 
+        ArrayList<Bill> bills = mDatabaseHelper.bills;
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        float profits[], revenue[], losses[];
+        profits = new float[13];
+        revenue = new float[13];
+        losses = new float[13];
+        for(int i=0; i<13; i++){
+            profits[i] = revenue[i] = losses [i] = 0;
+        }
+        for(Bill b: bills){
+            if(b.date.getYear()==year) {
+                int month = b.date.getMonth();
+                for(float f: b.prices)
+                    if(b.isSelling)
+                        revenue[month]+=f;
+                    else losses[month]+=f;
+            }
+        }
+        for(int i=0; i<13; i++){
+            profits[i] = revenue[i]-losses[i];
+        }
+
+
         //fetch data and update overallStats
         ArrayList<Entry> overallProfitRawData = new ArrayList<>();
-        overallProfitRawData.add(new Entry(5,39));
-        overallProfitRawData.add(new Entry(11,-22));
-        overallProfitRawData.add(new Entry(13,40));
+        ArrayList<Entry> overallRevenueRawData = new ArrayList<>();
+        ArrayList<Entry> overallLossRawData = new ArrayList<>();
+
+        for(int i=1; i<=12; i++){
+            overallProfitRawData.add(i-1, new Entry(i, profits[i]));
+            overallRevenueRawData.add(i-1, new Entry(i, revenue[i]));
+            overallLossRawData.add(i-1, new Entry(i, losses[i]));
+        }
+
         LineDataSet overallProfitDataSet = new LineDataSet(overallProfitRawData, "Profits");
         overallProfitDataSet.setColor(getResources().getColor(R.color.colorGraphProfitLine));
         overallProfitDataSet.setCircleColor(getResources().getColor(R.color.colorGraphProfitLine));
         overallProfitDataSet.setCircleHoleColor(getResources().getColor(R.color.colorGraphProfitLine));
 
-        ArrayList<Entry> overallRevenueRawData = new ArrayList<>();
-        overallRevenueRawData.add(new Entry(5,10));
-        overallRevenueRawData.add(new Entry(11,20));
-        overallRevenueRawData.add(new Entry(13,30));
+
         LineDataSet overallRevenueDataSet = new LineDataSet(overallRevenueRawData, "Revenue");
         overallRevenueDataSet.setColor(getResources().getColor(R.color.colorGraphRevenueLine));
         overallRevenueDataSet.setCircleColor(getResources().getColor(R.color.colorGraphRevenueLine));
         overallRevenueDataSet.setCircleHoleColor(getResources().getColor(R.color.colorGraphRevenueLine));
 
+        LineDataSet overallLossesDataSet = new LineDataSet(overallLossRawData, "Expense");
+        overallRevenueDataSet.setColor(getResources().getColor(R.color.colorGraphExpenseLine));
+        overallRevenueDataSet.setCircleColor(getResources().getColor(R.color.colorGraphExpenseLine));
+        overallRevenueDataSet.setCircleHoleColor(getResources().getColor(R.color.colorGraphExpenseLine));
+
 
         LineData overallData = new LineData();
         overallData.addDataSet(overallProfitDataSet);
         overallData.addDataSet(overallRevenueDataSet);
+        overallData.addDataSet(overallLossesDataSet);
         overallStats.setData(overallData);
         overallStats.invalidate();
 
