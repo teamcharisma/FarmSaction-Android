@@ -18,4 +18,25 @@
     <string name="newManualInput">Enter manually</string>
     <string name="next">Next</string>
     <string name="chooseCrop">Choose Crop:</string>
+    <string name="addItem">Add an item:</string>
+    <string name="giveCategory">Select a category:</string>
+    <string name="addCost">Cost:</string>
+    <string name="addCrop">Select Crop:</string>
+    <string name="add">Add</string>
+    <string name="newSellForm">Sell Stuff</string>
+
+    <string-array name="category">
+        <item>General Expenditure</item>
+        <item>Labour</item>
+        <item>Electricity</item>
+        <item>Fertilizer</item>
+        <item>Pesticides</item>
+        <item>Machinery</item>
+        <item>Property taxes</item>
+        <item>Custom Work</item>
+        <item>Fuel</item>
+        <item>Livestock</item>
+        <item>Rent</item>
+    </string-array>
+
 </resources>

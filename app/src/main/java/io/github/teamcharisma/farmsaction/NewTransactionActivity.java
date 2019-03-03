@@ -9,29 +9,26 @@ import android.widget.TextView;
 
 public class NewTransactionActivity extends AppCompatActivity {
 
-    TextView mQRScanButton, mManualInputButton;
+    TextView  mManualInputButton, mBuyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_transaction);
-        mQRScanButton = findViewById(R.id.newScanQRButton);
         mManualInputButton = findViewById(R.id.newManualInputButton);
-
-        mQRScanButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NewTransactionActivity.this, ScanQRActivity.class);
-                intent.putExtra("requestCode", 0);
-                startActivityForResult(intent, 0);
-                //setResult(RESULT_OK, intent)
-            }
-        });
+        mBuyButton = findViewById(R.id.newSellInputButton);
 
         mManualInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(NewTransactionActivity.this, AddProductActivity.class));
+                startActivity(new Intent(NewTransactionActivity.this, AddRevenueItemActivity.class));
+            }
+        });
+
+        mBuyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AddExpenseItemActivity.class));
             }
         });
     }

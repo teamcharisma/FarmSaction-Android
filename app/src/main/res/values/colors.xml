@@ -9,4 +9,5 @@
     <color name="colorTitle">#edcc85</color>
     <color name="colorButtonPrimary">#edcc85</color>
     <color name="colorButtonSecondary">#94876B</color>
+    <color name="colorSelected">#D3a534</color>
 </resources>

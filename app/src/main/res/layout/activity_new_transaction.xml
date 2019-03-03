@@ -10,12 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="@string/newScanQR"
-        android:id="@+id/newScanQRButton"/>
+        android:text="@string/addRevenue"
+        android:id="@+id/newManualInputButton"
+        android:background="#edcc85"
+        android:fontFamily="@font/proximanovasbold"
+        android:gravity="center"
+        android:textSize="64dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="@string/newManualInput"
-        android:id="@+id/newManualInputButton"/>
+        android:text="@string/addExpense"
+        android:id="@+id/newSellInputButton"
+        android:background="#d3a534"
+        android:fontFamily="@font/proximanovasbold"
+        android:gravity="center"
+        android:textSize="64dp"/>
 </LinearLayout>
