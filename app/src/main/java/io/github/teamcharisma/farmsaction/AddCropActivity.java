@@ -64,7 +64,7 @@ public class AddCropActivity extends AppCompatActivity {
     public void onclick(View w){
         Intent intent = new Intent(getApplicationContext(), BillActivity.class);
         intent.putExtra("itemnames", extras.getStringArrayList("itemnames"));
-        intent.putExtra("itemprices", extras.getFloatArray("itemprices"));
+        intent.putExtra("itemprices", extras.getStringArrayList("itemprices"));
         intent.putExtra("categories", extras.getBooleanArray("categories"));
         intent.putExtra("crops", crops);
 

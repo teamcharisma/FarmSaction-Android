@@ -23,7 +23,7 @@ public class AddRevenueItemActivity extends AppCompatActivity {
     Button mAdd;
     ArrayList<String> mCategories;
     ArrayList<String> mItemNames;
-    ArrayList<Float> mItemPrices;
+    ArrayList<String> mItemPrices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +34,11 @@ public class AddRevenueItemActivity extends AppCompatActivity {
 
         mCategories = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.category)));
         Intent oldIntent = getIntent();
-        if(oldIntent.hasExtra("itemnames"))
+        Bundle extras = oldIntent.getExtras();
+        if(extras != null)
         {
-            mItemNames = new ArrayList<String>(Arrays.asList(oldIntent.getStringArrayExtra("itemnames")));
-            mItemPrices = new ArrayList<>();
-            for (float f : oldIntent.getFloatArrayExtra("itemprices")) {
-                mItemPrices.add(f);
-            }
+            mItemNames = extras.getStringArrayList("itemnames");
+            mItemPrices = extras.getStringArrayList("itemprices");
 ;        }
         else {
             mItemNames = new ArrayList<>();
@@ -52,7 +50,7 @@ public class AddRevenueItemActivity extends AppCompatActivity {
        Intent intent = new Intent(getApplicationContext(), SelectCategoryActivity.class);
 
        mItemNames.add(mItemName.getText().toString());
-       mItemPrices.add(Float.parseFloat(mCost.getText().toString()));
+       mItemPrices.add(mCost.getText().toString());
 
        intent.putExtra("itemnames", mItemNames);
        intent.putExtra("itemprices", mItemPrices);

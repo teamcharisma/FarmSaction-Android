@@ -156,7 +156,7 @@ public class SelectCategoryActivity extends AppCompatActivity {
     public void onclick (View w) {
         Intent intent = new Intent(getBaseContext(), AddCropActivity.class);
         intent.putExtra("itemnames", extras.getStringArrayList("itemnames"));
-        intent.putExtra("itemprices", extras.getFloatArray("itemprices"));
+        intent.putExtra("itemprices", extras.getStringArrayList("itemprices"));
         intent.putExtra("categories", categories);
         startActivity(intent);
     }

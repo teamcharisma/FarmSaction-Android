@@ -23,7 +23,7 @@ public class BillActivity extends AppCompatActivity {
         LinearLayout ll = findViewById(R.id.bill);
         if (extras != null) {
             ArrayList<String> itemName = extras.getStringArrayList("itemnames");
-            float itemPrices[] = extras.getFloatArray("itemprices");
+            ArrayList<String> itemPrices = extras.getStringArrayList("itemprices");
             boolean categories[] = extras.getBooleanArray("categories");
             boolean crops[] = extras.getBooleanArray("crops");
 
@@ -35,7 +35,7 @@ public class BillActivity extends AppCompatActivity {
                 removeButton = element.findViewById(R.id.removeButton);
 
                 itemname.setText(itemName.get(i));
-                itemprice.setText("Rs " + itemPrices[i]);
+                itemprice.setText("Rs " + itemPrices.get(i));
 
                 ll.addView(element);
             }
