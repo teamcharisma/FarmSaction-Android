@@ -29,11 +29,13 @@ public class BillActivity extends AppCompatActivity {
 
             for (int i = 0; i < itemName.size(); i++){
                 View element = LayoutInflater.from(this).inflate(R.layout.layout_bill_item, ll, false);
-                TextView itemname, itemprice, removeButton;
+                TextView itemname, itemprice, removeButton, categoriest;
                 itemname = element.findViewById(R.id.itemname);
                 itemprice = element.findViewById(R.id.itemprice);
                 removeButton = element.findViewById(R.id.removeButton);
+                categoriest = element.findViewById(R.id.categories);
 
+                categories.setText(String.valueOf(categories[0]));
                 itemname.setText(itemName.get(i));
                 itemprice.setText("Rs " + itemPrices.get(i));
 
