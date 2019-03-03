@@ -3,8 +3,11 @@ package io.github.teamcharisma.farmsaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -26,6 +29,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.json.gson.GsonFactory;
@@ -34,12 +39,18 @@ import com.google.api.services.drive.DriveScopes;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 import java.util.PropertyPermission;
 import java.util.concurrent.TimeUnit;
@@ -69,6 +80,8 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     private void startAnimation() {
+        if(mAuth.getCurrentUser()!=null || GoogleSignIn.getLastSignedInAccount(this)!=null)
+            startActivity(new Intent(IntroActivity.this, DashboardActivity.class));
         ImageView farmLogo = findViewById(R.id.farm_logo),
                 charismaLogo = findViewById(R.id.charisma_logo);
 
@@ -76,6 +89,7 @@ public class IntroActivity extends AppCompatActivity {
         String language = prefs.getString(getStr(R.string.language_key), "");
         if (!TextUtils.isEmpty(language)) {
             setLanguage(this, language);
+            inflateLoginCard();
         } else {
             inflateLanguageCard();
         }
@@ -336,6 +350,7 @@ public class IntroActivity extends AppCompatActivity {
         GoogleSignIn.getSignedInAccountFromIntent(result)
                 .addOnSuccessListener(googleAccount -> {
                     Log.d(TAG, "Signed in as " + googleAccount.getEmail());
+                    firebaseAuthWithGoogle(googleAccount);
                     signInToDrive(googleAccount);
                 })
                 .addOnFailureListener(exception ->
@@ -343,10 +358,33 @@ public class IntroActivity extends AppCompatActivity {
                 );
     }
 
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        startActivity(new Intent(this, DashboardActivity.class));
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                    }
+
+                    // ...
+                });
+    }
+
     void signInToDrive(GoogleSignInAccount googleAccount) {
+        List<String> list = new ArrayList<>();
+        list.add(DriveScopes.DRIVE_APPDATA);
+        list.add(DriveScopes.DRIVE_FILE);
         GoogleAccountCredential credential =
                 GoogleAccountCredential.usingOAuth2(
-                        this, Collections.singleton(DriveScopes.DRIVE_FILE));
+                        this, list);
         credential.setSelectedAccount(googleAccount.getAccount());
         Drive googleDriveService =
                 new Drive.Builder(
@@ -358,7 +396,8 @@ public class IntroActivity extends AppCompatActivity {
 
         // The DriveServiceHelper encapsulates all REST API and SAF functionality.
         // Its instantiation is required before handling any onClick actions.
-        mDriveServiceHelper = new DriveServiceHelper(googleDriveService, this);
+        AsyncTask.execute(() -> mDriveServiceHelper =
+                new DriveServiceHelper(googleDriveService, IntroActivity.this));
     }
 
     @Override

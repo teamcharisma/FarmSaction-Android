@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="io.github.teamcharisma.farmsaction">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+
     <application
         android:allowBackup="true"
         android:configChanges="locale"
@@ -12,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".IntroActivity"
+        <activity android:name=".UPIActivity"></activity>
+        <activity
+            android:name=".IntroActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +29,16 @@
         </activity>
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme"/>
+            android:theme="@style/SplashTheme" />
         <activity android:name=".OTPActivity" />
         <activity android:name=".DetailedStatsActivity" />
-        <activity android:name=".DashboardActivity"
-            android:theme="@style/SplashTheme"/>
+        <activity
+            android:name=".DashboardActivity"
+            android:theme="@style/SplashTheme" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".LanguageActivity" />
+
+        <service android:name=".SMSService" />
     </application>
 
 </manifest>
