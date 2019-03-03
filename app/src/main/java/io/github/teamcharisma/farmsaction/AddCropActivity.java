@@ -15,7 +15,7 @@ public class AddCropActivity extends AppCompatActivity {
     ArrayList<TextView> buttons;
     Intent oldIntent;
     Bundle extras;
-    ArrayList<Boolean> crops;
+    String crop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class AddCropActivity extends AppCompatActivity {
 
         oldIntent = getIntent();
         extras = oldIntent.getExtras();
+        buttons = new ArrayList<>();
 
         int id[] = {
             R.id.rice,
@@ -35,23 +36,20 @@ public class AddCropActivity extends AppCompatActivity {
             R.id.tea
         };
 
-        crops = new ArrayList<>();
-        buttons = new ArrayList<>();
-        for (int i = 0; i < id.length; i++) {
+        for(int i = 0; i < id.length; i++)
             buttons.add(findViewById(id[i]));
-            crops.add(false);
-        }
 
         View.OnClickListener onclick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 for (int i=0;i < id.length; i++) {
                     if (v.getId() == id[i]) {
-                        crops.set(i, !crops.get(i));
-                        if (crops.get(i))
-                            buttons.get(i).setBackgroundColor(getResources().getColor(R.color.colorSelected));
-                        else
-                            buttons.get(i).setBackgroundColor(getResources().getColor(R.color.colorTitle));
+                        crop = ((TextView)v).getText().toString();
+                        //crops.set(i, !crops.get(i));
+                       // if (crops.get(i))
+                       //     buttons.get(i).setBackgroundColor(getResources().getColor(R.color.colorSelected));
+                       // else
+                         //   buttons.get(i).setBackgroundColor(getResources().getColor(R.color.colorTitle));
                     }
                 }
             }
@@ -65,9 +63,14 @@ public class AddCropActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), BillActivity.class);
         intent.putExtra("itemnames", extras.getStringArrayList("itemnames"));
         intent.putExtra("itemprices", extras.getStringArrayList("itemprices"));
-        intent.putExtra("categories", extras.getBooleanArray("categories"));
+        intent.putExtra("categories", extras.getStringArrayList("categories"));
+        ArrayList<String> crops;
+        if (oldIntent.hasExtra("crops"))
+            crops = extras.getStringArrayList("crops");
+        else
+            crops = new ArrayList<>();
+        crops.add(crop);
         intent.putExtra("crops", crops);
-
         startActivity(intent);
     }
 }

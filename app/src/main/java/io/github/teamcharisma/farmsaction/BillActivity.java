@@ -24,8 +24,8 @@ public class BillActivity extends AppCompatActivity {
         if (extras != null) {
             ArrayList<String> itemName = extras.getStringArrayList("itemnames");
             ArrayList<String> itemPrices = extras.getStringArrayList("itemprices");
-            boolean categories[] = extras.getBooleanArray("categories");
-            boolean crops[] = extras.getBooleanArray("crops");
+            ArrayList<String> categories = extras.getStringArrayList("categories");
+            ArrayList<String> crops = extras.getStringArrayList("crops");
 
             for (int i = 0; i < itemName.size(); i++){
                 View element = LayoutInflater.from(this).inflate(R.layout.layout_bill_item, ll, false);
@@ -35,7 +35,7 @@ public class BillActivity extends AppCompatActivity {
                 removeButton = element.findViewById(R.id.removeButton);
                 categoriest = element.findViewById(R.id.categories);
 
-                categories.setText(String.valueOf(categories[0]));
+                categoriest.setText(String.valueOf(categories.get(i)));
                 itemname.setText(itemName.get(i));
                 itemprice.setText("Rs " + itemPrices.get(i));
 
