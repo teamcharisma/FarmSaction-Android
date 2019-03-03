@@ -39,8 +39,6 @@ public class BillActivity extends AppCompatActivity {
 
                 ll.addView(element);
             }
-
-
         }
     }
 }
